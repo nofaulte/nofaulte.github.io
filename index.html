@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>花都时代 - 城市生活美学与花艺文化资讯平台</title>
+    <meta name="description" content="花都时代专注于花艺文化、城市生活美学、花卉产业趋势与生活方式内容分享。提供花艺设计灵感、花卉养护指南、城市花事活动资讯以及花语文化解读，为热爱自然与美学的人群打造一个全面的内容平台。">
+    <meta name="keywords" content="花都时代,花艺,花卉,城市生活,花语,养花,园艺,花艺设计,鲜花,绿植,花事活动,生活美学">
+    <style>
+        /* 全局重置与基础 */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background-color: #fdfcf9; /* 柔和的米白基调 */
+            color: #2d3436;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        a { text-decoration: none; color: inherit; transition: color 0.2s ease; }
+        img { max-width: 100%; display: block; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* 头部区域 */
+        .site-header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #f0eae2;
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #e77d7d, #f2b5a7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+            box-shadow: 0 4px 10px rgba(231, 125, 125, 0.3);
+        }
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #4a4a4a;
+        }
+        .logo-text span { color: #d96c6c; }
+        .main-nav ul {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            font-weight: 500;
+            color: #555;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .main-nav a:hover {
+            color: #d96c6c;
+            border-bottom-color: #d96c6c;
+        }
+        .header-search {
+            display: flex;
+            align-items: center;
+            background: #f9f5f0;
+            border-radius: 30px;
+            padding: 4px 4px 4px 16px;
+            border: 1px solid #eee;
+        }
+        .header-search input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 0.9rem;
+            width: 180px;
+            color: #333;
+        }
+        .header-search button {
+            background: #d96c6c;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 8px 18px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .header-search button:hover { background: #c25555; }
+
+        /* 首屏 Hero 区域 */
+        .hero {
+            background: linear-gradient(120deg, #fff5f0 0%, #fde8e0 50%, #f9dcd2 100%);
+            padding: 70px 0 80px;
+            border-bottom: 1px solid #f3e3dc;
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+        .hero-text h1 {
+            font-size: 3rem;
+            line-height: 1.3;
+            font-weight: 800;
+            color: #3d2c2c;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .hero-text h1 .accent {
+            color: #d96c6c;
+            position: relative;
+            display: inline-block;
+        }
+        .hero-text h1 .accent::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(217, 108, 108, 0.15);
+            z-index: -1;
+            border-radius: 4px;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #5f4e4e;
+            max-width: 600px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: #d96c6c;
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 40px;
+            font-weight: 600;
+            box-shadow: 0 6px 15px rgba(217, 108, 108, 0.3);
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .btn-primary:hover { transform: translateY(-3px); background: #c25555; }
+        .btn-outline {
+            border: 2px solid #d96c6c;
+            color: #d96c6c;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .btn-outline:hover { background-color: #d96c6c; color: #fff; }
+
+        .hero-visual {
+            background: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            position: relative;
+        }
+        .hero-visual-card {
+            background: #faf6f2;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+        }
+        .flower-emoji {
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+        }
+        .mini-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #e5d9d2;
+        }
+        .stat-item { text-align: center; }
+        .stat-num { font-size: 1.4rem; font-weight: 700; color: #d96c6c; }
+        .stat-label { font-size: 0.8rem; color: #8a7b7b; }
+
+        /* 信息板块通用 */
+        .section {
+            padding: 70px 0;
+        }
+        .section-title-wrap {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .section-subtitle {
+            color: #8a7b7b;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* 花艺文化分类卡片 */
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .culture-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid #f0eae2;
+            transition: 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .culture-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.07);
+            border-color: #e7b7b7;
+        }
+        .culture-icon { font-size: 2.8rem; margin-bottom: 18px; }
+        .culture-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #3d2c2c;
+        }
+        .culture-card p {
+            font-size: 0.9rem;
+            color: #6d5d5d;
+            line-height: 1.6;
+        }
+
+        /* 城市花事 · 双列布局 */
+        .event-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        .event-feature {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+        }
+        .event-feature img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background: #e8ddd5;
+        }
+        .event-feature-content { padding: 30px; }
+        .event-feature-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #3d2c2c;
+        }
+        .event-feature-content p {
+            color: #6d5d5d;
+            margin-bottom: 20px;
+        }
+        .event-tag {
+            display: inline-block;
+            background: #fde8e0;
+            color: #d96c6c;
+            font-size: 0.8rem;
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .event-list {
+            background: #fff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+        }
+        .event-list h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0eae2;
+            color: #3d2c2c;
+        }
+        .event-item {
+            padding: 16px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        .event-item:last-child { border-bottom: none; }
+        .event-item h4 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            color: #4a3a3a;
+        }
+        .event-item p {
+            color: #8a7b7b;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 花语知识卡片 */
+        .flower-meaning-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .meaning-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            border-left: 4px solid #e7b7b7;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            transition: 0.2s;
+        }
+        .meaning-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+        .meaning-card h4 { font-size: 1.2rem; margin-bottom: 8px; color: #3d2c2c; }
+        .meaning-card p { font-size: 0.9rem; color: #6d5d5d; }
+        .meaning-card .flower-name { color: #d96c6c; font-weight: 600; }
+
+        /* 养护指南 步骤 */
+        .guide-section {
+            background: #fff;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+        }
+        .guide-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .step-item {
+            text-align: center;
+            padding: 20px;
+        }
+        .step-num {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #d96c6c, #e79a9a);
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 18px rgba(217, 108, 108, 0.25);
+        }
+        .step-item h4 { font-size: 1.2rem; margin-bottom: 12px; }
+        .step-item p { font-size: 0.9rem; color: #6d5d5d; max-width: 260px; margin: 0 auto; }
+
+        /* FAQ 区域 */
+        .faq-list {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: #fff;
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin-bottom: 16px;
+            border: 1px solid #f0eae2;
+            transition: 0.2s;
+        }
+        .faq-item:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            color: #3d2c2c;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.6rem;
+            color: #d96c6c;
+            font-weight: 300;
+        }
+        .faq-answer {
+            color: #6d5d5d;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            background: #2d3436;
+            color: #c8c8c8;
+            padding: 60px 0 30px;
+            margin-top: 40px;
+        }
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-brand p {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #9b9b9b;
+            max-width: 300px;
+        }
+        .footer-title {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+        .footer-links a:hover { color: #e79a9a; }
+        .copyright {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .culture-grid { grid-template-columns: repeat(2, 1fr); }
+            .flower-meaning-grid { grid-template-columns: repeat(2, 1fr); }
+            .guide-steps { grid-template-columns: 1fr; }
+            .hero-content { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 2.4rem; }
+            .event-layout { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .header-inner { flex-direction: column; align-items: flex-start; }
+            .main-nav ul { gap: 18px; }
+            .header-search { width: 100%; }
+            .header-search input { flex: 1; }
+            .culture-grid { grid-template-columns: 1fr; }
+            .flower-meaning-grid { grid-template-columns: 1fr; }
+            .section { padding: 50px 0; }
+            .section-title { font-size: 1.8rem; }
+            .guide-section { padding: 30px 20px; }
+            .hero { padding: 50px 0; }
+        }
+        @media (max-width: 480px) {
+            .hero-text h1 { font-size: 2rem; }
+            .footer-inner { grid-template-columns: 1fr; }
+        }
+    </style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 头部 -->
+<header class="site-header">
+    <div class="container header-inner">
+        <div class="logo-area">
+            <div class="logo-icon">✿</div>
+            <div class="logo-text">花都<span>时代</span></div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#culture">花艺文化</a></li>
+                <li><a href="#events">城市花事</a></li>
+                <li><a href="#meanings">花语解读</a></li>
+                <li><a href="#guide">养护指南</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+        <div class="header-search">
+            <input type="text" placeholder="搜索花材或话题...">
+            <button>搜索</button>
+        </div>
+    </div>
+</header>
+
+<!-- 主视觉区域 -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>在<span class="accent">花都时代</span><br>发现生活的诗意与芬芳</h1>
+                <p>花都时代，一个专注花艺文化、城市生态美学与花卉生活方式的平台。我们相信每一朵花都有它的语言，每一个城市角落都值得被绿意滋养。在这里，读懂花，也读懂生活。</p>
+                <div class="hero-buttons">
+                    <a href="#culture" class="btn-primary">探索花艺世界</a>
+                    <a href="#events" class="btn-outline">近期花事活动</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-visual-card">
+                    <div class="flower-emoji">🌸🌿🌺</div>
+                    <p style="font-weight:500; color:#5f4e4e;">在花都时代，每一天都是花期</p>
+                    <div class="mini-stats">
+                        <div class="stat-item">
+                            <div class="stat-num">100+</div>
+                            <div class="stat-label">花艺主题内容</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-num">30+</div>
+                            <div class="stat-label">城市花事报道</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-num">50+</div>
+                            <div class="stat-label">花语知识解读</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 花艺文化分类 -->
+<section class="section" id="culture">
+    <div class="container">
+        <div class="section-title-wrap">
+            <h2 class="section-title">花艺文化 · 多维探索</h2>
+            <p class="section-subtitle">从古典花道到现代花艺设计，花都时代为您梳理不同维度的花卉美学脉络。</p>
+        </div>
+        <div class="culture-grid">
+            <div class="culture-card">
+                <div class="culture-icon">🏵️</div>
+                <h3>东方花道</h3>
+                <p>溯源中式插花与日式花道哲学，在留白与线条中体会东方美学的宁静致远。</p>
+            </div>
+            <div class="culture-card">
+                <div class="culture-icon">💐</div>
+                <h3>现代花艺设计</h3>
+                <p>从手捧花到空间装置，探索当代花艺设计的创意表达与商业应用场景。</p>
+            </div>
+            <div class="culture-card">
+                <div class="culture-icon">🌱</div>
+                <h3>城市园艺</h3>
+                <p>阳台改造、垂直绿化、社区花园，让绿色成为城市生活的日常底色。</p>
+            </div>
+            <div class="culture-card">
+                <div class="culture-icon">📖</div>
+                <h3>花与文学艺术</h3>
+                <p>花卉在绘画、诗歌与电影中的隐喻，解读花朵承载的文化符号与情感记忆。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 城市花事活动 -->
+<section class="section" id="events" style="background: #faf5f0;">
+    <div class="container">
+        <div class="section-title-wrap">
+            <h2 class="section-title">城市花事 · 近期动态</h2>
+            <p class="section-subtitle">花都时代汇集城市中的花艺展览、市集与园艺分享会，让您不错过每一场花事。</p>
+        </div>
+        <div class="event-layout">
+            <div class="event-feature">
+                <div style="background: linear-gradient(135deg, #e8ddd5, #d9c7bd); height: 280px; display:flex; align-items:center; justify-content:center; font-size: 5rem;">🌼</div>
+                <div class="event-feature-content">
+                    <span class="event-tag">重点推荐</span>
+                    <h3>春日花朝节 · 城市公园花艺市集</h3>
+                    <p>汇集本地花艺工作室、独立花农与园艺品牌，现场设有花艺体验工坊、植物交换角与花食摊位。适合家庭出游与花艺爱好者交流。</p>
+                    <a href="#" class="btn-outline" style="padding: 8px 22px; font-size:0.9rem;">了解详情</a>
+                </div>
+            </div>
+            <div class="event-list">
+                <h3>近期活动一览</h3>
+                <div class="event-item">
+                    <h4>「花间集」主题插花展</h4>
+                    <p>📅 时间：本月每周末 · 📍 市美术馆东厅</p>
+                </div>
+                <div class="event-item">
+                    <h4>社区园艺分享会：阳台月季养护</h4>
+                    <p>📅 时间：下周六下午 · 📍 城市书房</p>
+                </div>
+                <div class="event-item">
+                    <h4>夏日香草植物市集</h4>
+                    <p>📅 时间：下月初 · 📍 滨江草坪广场</p>
+                </div>
+                <div class="event-item">
+                    <h4>花艺师职业发展沙龙</h4>
+                    <p>📅 时间：月末 · 📍 线上直播</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 花语知识解读 -->
+<section class="section" id="meanings">
+    <div class="container">
+        <div class="section-title-wrap">
+            <h2 class="section-title">花语解读 · 会说话的花朵</h2>
+            <p class="section-subtitle">每一种花都有自己的情绪与故事，了解花语让您在赠花与赏花时多一分心意。</p>
+        </div>
+        <div class="flower-meaning-grid">
+            <div class="meaning-card">
+                <h4><span class="flower-name">玫瑰</span> · 爱情与热忱</h4>
+                <p>红玫瑰象征热烈的爱情，粉玫瑰代表温柔与感动，白玫瑰则寓意纯洁与尊重。不同颜色传递的情感层次十分丰富。</p>
+            </div>
+            <div class="meaning-card">
+                <h4><span class="flower-name">向日葵</span> · 信念与阳光</h4>
+                <p>向日葵始终追随太阳，花语为忠诚、信念与希望。赠予朋友或正在努力的人，寓意“你是我的阳光”。</p>
+            </div>
+            <div class="meaning-card">
+                <h4><span class="flower-name">康乃馨</span> · 母爱与温情</h4>
+                <p>康乃馨是母爱的象征，粉色康乃馨传递感恩，红色表达敬意。适合在母亲节或感恩场合赠送。</p>
+            </div>
+            <div class="meaning-card">
+                <h4><span class="flower-name">百合</span> · 纯洁与祝福</h4>
+                <p>百合花形优雅，寓意纯洁、庄严与心想事成。白色百合常被用于婚礼与祝福场合。</p>
+            </div>
+            <div class="meaning-card">
+                <h4><span class="flower-name">绣球花</span> · 圆满与希望</h4>
+                <p>绣球花团锦簇，象征家庭的团聚与美满。蓝色绣球花也带有“理解与宽容”的含义。</p>
+            </div>
+            <div class="meaning-card">
+                <h4><span class="flower-name">洋桔梗</span> · 真诚不变</h4>
+                <p>洋桔梗花形别致，花语为“真诚不变的爱”，适合作为日常表达心意的花礼选择。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 养护指南 -->
+<section class="section" style="padding-top: 20px;">
+    <div class="container">
+        <div class="guide-section">
+            <div class="section-title-wrap" style="margin-bottom: 0;">
+                <h2 class="section-title">新手养花 · 三步入门</h2>
+                <p class="section-subtitle">花都时代为初入花坑的朋友准备了简单实用的养护入门路径。</p>
+            </div>
+            <div class="guide-steps">
+                <div class="step-item">
+                    <div class="step-num">01</div>
+                    <h4>选对植物</h4>
+                    <p>从耐养型植物入手，如绿萝、虎皮兰、长寿花。根据家中光照条件挑选合适的品种，能大幅提高成功率。</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">02</div>
+                    <h4>掌握浇水节奏</h4>
+                    <p>多数植物遵循“见干见湿”原则。用手指探入土壤约2-3厘米，感觉干燥再浇水，避免频繁少量浇水造成烂根。</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">03</div>
+                    <h4>光照与通风</h4>
+                    <p>了解植物对光照的需求。喜阳植物放置在南向窗边，耐阴植物也需明亮散射光。保持良好通风有助于减少病虫害。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 常见问题 FAQ -->
+<section class="section" id="faq" style="background: #faf5f0;">
+    <div class="container">
+        <div class="section-title-wrap">
+            <h2 class="section-title">关于花都时代 · 常见问题</h2>
+            <p class="section-subtitle">您可能关心的问题，我们在这里集中解答。</p>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">花都时代是一个什么样的平台？</div>
+                <div class="faq-answer">花都时代是一个围绕花艺文化、城市生活美学与花卉知识的内容平台。我们通过文章、活动资讯和知识科普，为花卉爱好者、生活美学追求者以及行业从业者提供有价值的信息。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">平台内容更新频率如何？</div>
+                <div class="faq-answer">我们持续保持内容更新，涵盖花艺作品赏析、养护技巧、城市花事活动以及花语文化解读等方向。建议您定期访问或收藏本页面，获取最新内容。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">如何参与平台组织的线下活动？</div>
+                <div class="faq-answer">我们会不定期在“城市花事”栏目发布线下市集、花艺体验工坊和园艺分享会等活动信息。您可以通过页面展示的时间地点前往参与，部分活动可能需要预约报名，具体以活动说明为准。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">新手可以在平台学到什么？</div>
+                <div class="faq-answer">我们为新手提供了从植物选择、浇水光照管理到简单花艺制作的入门内容。通过阅读养护指南与花艺文化文章，您可以逐步建立自己的花卉知识体系。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">花语知识准确吗？</div>
+                <div class="faq-answer">花语在不同文化中存在差异，我们参考了较为普遍的花语解读体系，并结合东方文化语境进行梳理。花语本身是文化象征，更多是表达心意的一种方式，请以实际情境灵活理解。</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="logo-text" style="color: #fff;">花都<span style="color:#e79a9a;">时代</span></div>
+                <p>在城市中寻找自然，在花朵里发现诗意。花都时代与每一位热爱生活的人相伴，分享关于花与美的点滴灵感。</p>
+            </div>
+            <div>
+                <h4 class="footer-title">内容栏目</h4>
+                <ul class="footer-links">
+                    <li><a href="#culture">花艺文化</a></li>
+                    <li><a href="#events">城市花事</a></li>
+                    <li><a href="#meanings">花语解读</a></li>
+                    <li><a href="#guide">养护指南</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">更多探索</h4>
+                <ul class="footer-links">
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">内容投稿</a></li>
+                    <li><a href="#">合作联系</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 花都时代 Huadu Times · 让生活如花般绽放
+        </div>
+    </div>
+</footer>
+
+</body>
+                          </html>
